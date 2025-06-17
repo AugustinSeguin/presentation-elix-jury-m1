@@ -15,26 +15,17 @@ function App() {
     let timer = null;
     if (isActive) {
       timer = setInterval(() => {
-        setSeconds((prevSeconds) => {
+        setSeconds(prevSeconds => {
           const newSeconds = prevSeconds + 1;
 
           // Mettre à jour les minutes écoulées
           if (newSeconds % 60 === 0) {
-            setMinutesPassed((prevMinutes) => {
+            setMinutesPassed(prevMinutes => {
               const newMinutes = prevMinutes + 1;
               if (newMinutes <= 3) {
-                setTimerFontSize((prevSize) => prevSize + 6);
+                setTimerFontSize(prevSize => prevSize + 4); // Augmente la taille de la police du minuteur chaque minute
               }
               return newMinutes;
-            });
-          }
-
-          // Mettre à jour le compteur toutes les 3 minutes
-          if (newSeconds % (3 * 60) === 0) {
-            setCount((prevCount) => {
-              const newCount = prevCount + 1;
-              setCountFontSize((prevSize) => prevSize + 6);
-              return newCount;
             });
           }
 
@@ -48,6 +39,16 @@ function App() {
       }
     };
   }, [isActive]);
+
+  useEffect(() => {
+    if (minutesPassed > 0 && minutesPassed % 3 === 0) {
+      setCount(prevCount => {
+        const newCount = prevCount + 1;
+        setCountFontSize(prevSize => prevSize + 6); // Augmente la taille de la police du compteur toutes les 3 minutes
+        return newCount;
+      });
+    }
+  }, [minutesPassed]);
 
   const toggleTimer = () => {
     setIsActive(!isActive);
@@ -65,9 +66,7 @@ function App() {
   const formatTime = (totalSeconds) => {
     const minutes = Math.floor(totalSeconds / 60);
     const remainingSeconds = totalSeconds % 60;
-    return `${minutes.toString().padStart(2, "0")}:${remainingSeconds
-      .toString()
-      .padStart(2, "0")}`;
+    return `${minutes.toString().padStart(2, "0")}:${remainingSeconds.toString().padStart(2, "0")}`;
   };
 
   return (
