@@ -9,7 +9,7 @@ function VideoPlayer({ onEnd }) {
         autoPlay
         onEnded={onEnd} // ← Appelé quand la vidéo se termine
       >
-        <source src="/maquettes.mp4" type="video/mp4" />
+        <source src="/maquettes_compressed.mp4" type="video/mp4" />
         Votre navigateur ne supporte pas la balise vidéo.
       </video>
     </div>

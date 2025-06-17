@@ -20,7 +20,7 @@ function PDFViewer() {
     if (!showPDFViewer) {
       if (showVideo) {
         // peut etre changer le numéro de la page
-        setPageNumber(7); // Affiche la page 7 si on vient de la vidéo
+        setPageNumber(4); // Affiche la page 4 si on vient de la vidéo
       }
       setShowPDFViewer(true);
       setShowVideo(false);
@@ -34,8 +34,8 @@ function PDFViewer() {
   };
 
   const handleVideoEnd = () => {
-    // Passe à la page 7 quand la vidéo se termine
-    setPageNumber(7);
+    // Passe à la page 4 quand la vidéo se termine
+    setPageNumber(4);
     setShowVideo(false);
     setShowPDFViewer(true);
   };
