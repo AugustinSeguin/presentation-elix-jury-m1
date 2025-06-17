@@ -7,7 +7,7 @@ function App() {
   const [seconds, setSeconds] = useState(0);
   const [isActive, setIsActive] = useState(true);
   const [count, setCount] = useState(0);
-  const [countFontSize, setCountFontSize] = useState(48);
+  const [countFontSize, setCountFontSize] = useState(70);
   const [timerFontSize, setTimerFontSize] = useState(48);
   const [minutesPassed, setMinutesPassed] = useState(0);
 
@@ -59,7 +59,7 @@ function App() {
     setIsActive(true);
     setCount(0);
     setMinutesPassed(0);
-    setCountFontSize(48);
+    setCountFontSize(70);
     setTimerFontSize(48);
   };
 
